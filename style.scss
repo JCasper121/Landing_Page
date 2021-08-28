@@ -1,0 +1,286 @@
+@import "./styles/variables.scss";
+
+// @import "./styles/mixins/lang-card-flip.scss";
+@import './styles/mixins/clipped-border.scss';
+@import './styles/navbar.scss';
+@import './styles/jumbotron.scss';
+@import './styles/lang-card.scss';
+@import './styles/framework-card.scss';
+
+
+@font-face {
+    font-family: robotoMono;
+    src: url(../fonts/Roboto_Mono/RobotoMono-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: robotoBold;
+    src: url(../fonts/Roboto_Mono/RobotoMono-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: cascadia;
+    src: url(../fonts/cascadia-code/Cascadia.ttf) format("truetype");
+}
+
+
+// for "Web developer" subheading
+@keyframes flipdown {
+    from {
+        transform: rotateX(-90deg);
+        transform-origin: top;
+    }
+
+    to {
+        transform: rotateX(0deg);
+    }
+}
+
+@keyframes langcardflip {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+
+/* ============================================ */
+/* ============== Custom fonts ================ */
+/* ============================================ */
+.roboto-font {
+    font-family: "Roboto", monospace, Impact;
+}
+.roboto-bold-font {
+    font-family: "robotoBold", monospace, Impact;
+}
+
+.cascadia {
+    font-family: "cascadia", monospace;
+}
+
+// STYLES BEGIN
+* { box-sizing:border-box; }
+html {
+    //width: 100vw;
+    overflow-x: hidden;
+    width: 100vw;
+    body {
+        position: relative;
+        background-color: black;
+        height: 100%;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        letter-spacing: 2px;
+        .wrapper {
+            margin: 0;
+            padding: 0;
+
+            .section-header {
+                margin-left: 8%;
+                font-size: 2.5em;
+                font-weight: bold;
+            }
+
+            main {
+                margin: 0;
+                
+                // ************************************************
+                // Languages begin
+                // ************************************************
+                #languages-wrapper {
+                    background-color: $language-background;
+                    // clip-path: polygon(0 0, 100% 0, 100% 100%, 15% calc(100% - 7vh), 0 100%);
+                    @include clipped-border;
+                    z-index: 85;
+
+                    #languages {
+                        text-align: center;
+                        .lang-card-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+                            justify-items: center;
+                            align-content: center;
+                        }
+                    }
+                    
+                    @media screen and (max-width: 479px){
+                        #languages {
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+                // ************************************************
+                // Languages end
+                // ************************************************
+
+                // ************************************************
+                // Frameworks begin
+                // ************************************************
+                #frameworks-wrapper {
+                    background-color: $framework-background;
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    @include clipped-border;
+                    z-index: 80;
+                    
+                    #frameworks {
+                        // REsponsive flexbox for framework cards
+                        display: flex;
+                        // flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-evenly;
+                        gap: 50px 0px;
+                    }
+                    @media screen and (max-width: 1199px) {
+                        #frameworks {
+                            justify-content: center;
+                        }
+                    }
+                }
+                // ************************************************
+                // Frameworks end
+                // ************************************************
+                
+                    #projects-wrapper {
+                        background-color: $project-background;
+                        @include clipped-border;
+                        padding-bottom: 200px;
+                        width: 100%;
+                        z-index: 75;
+                        .projects {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            
+                            .project {
+                                background-color: $project-card;
+
+                                margin: 1em 0;
+                                border: 1px solid black;
+                                border-radius: 10px;
+                                padding: 1.5em;
+                                width: 80%;
+                                box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.3);
+                                
+                            .hover-prompt {
+                                display: flex;
+                                font-size: 1em;
+                            }
+                            .project-header-wrapper {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                
+                                .project-header {
+                                    text-decoration: underline;
+                                }
+                                a {
+                                    color: rgb(85, 85, 85);
+                                    
+                                    i {
+                                        font-size: 4em;
+                                        transition: 0.3s;
+                                        &:hover {
+                                            color: $code-green;
+                                        }
+                                    }
+                                }
+                            }
+                            .hover-text {
+                                color: black;
+                                font-weight: bold;
+                            }
+                            .project-images {
+                                display: flex;
+                                flex-wrap: wrap;
+                                width: 100%;
+                                justify-content: center;
+                                .project-img-wrapper {
+                                    padding: 0.25em;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items:center;
+                                    font-weight: bold;
+                                    text-decoration: underline;
+                                    .project-img {
+                                        max-height: 200px;
+                                    
+                                        &:hover {
+                                            transform: scale(3);
+                                            position: relative;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    }
+                    
+                    #certifications-wrapper {
+                        background-color: $certifications-background;
+                        @include clipped-border;
+                        .certifications {
+                            display: flex;
+                            justify-content: space-evenly;
+                            flex-wrap: wrap;
+                            .certification {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                .cert-img {
+                                    max-height: 230px;
+                                    aspect-ratio: 1 / 1;
+                                }
+                            }
+                        }
+                    }
+
+                    // ************************************************
+                    // Main end
+                    // ************************************************
+                }
+                #footer {
+                    clip-path: polygon(10% 0%, 90% 4vh, 100% 0, 100% 100%, 0% 100%, 10% calc(100% - 4vh), 0 100%, 0 4vh);
+                    height: 200px;
+                    margin-top: -3vh;
+                    background-color: $footer-background;
+                    font-family: Roboto, "Helvetica Neue", monospace;
+                    padding: 100px 0;
+                    height: 400px;
+                    line-height: 2em;
+                    .footer-wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        
+                        
+                        .contact-info {
+                            font-size: 1.5em;
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+                            padding-left: 10%;
+                            .contact-item {
+                                i {
+                                    margin-right: 1em;
+                                }
+                            }
+                        } 
+                    
+                        // h2 {
+                        //     color: black;
+                            
+                        // }
+                    }
+                }
+        }
+    }
+}
+
+

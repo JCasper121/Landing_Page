@@ -161,7 +161,7 @@
   width: 40%;
 }
 #landing #heading {
-  font-family: "cascadia";
+  font-family: "cascadia", monospace;
 }
 #landing #subhead {
   transform: rotateX(-90deg);
@@ -368,11 +368,17 @@ html body {
 html body .wrapper {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 html body .wrapper .section-header {
   margin-left: 8%;
   font-size: 2.5em;
   font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+  html body .wrapper .section-header {
+    font-size: 1.5em;
+  }
 }
 html body .wrapper main {
   margin: 0;
@@ -436,6 +442,7 @@ html body .wrapper main #projects-wrapper .projects {
 }
 html body .wrapper main #projects-wrapper .projects .project {
   background-color: #bdbd9f;
+  z-index: 50;
   margin: 1em 0;
   border: 1px solid black;
   border-radius: 10px;
@@ -484,11 +491,26 @@ html body .wrapper main #projects-wrapper .projects .project .project-images .pr
   text-decoration: underline;
 }
 html body .wrapper main #projects-wrapper .projects .project .project-images .project-img-wrapper .project-img {
+  max-width: 100%;
   max-height: 200px;
 }
 html body .wrapper main #projects-wrapper .projects .project .project-images .project-img-wrapper .project-img:hover {
   transform: scale(3);
   position: relative;
+  z-index: 90;
+  bottom: 150px;
+}
+@media screen and (max-width: 800px) {
+  html body .wrapper main #projects-wrapper .projects .project .project-images .project-img-wrapper .project-img:hover {
+    transform: scale(1.8);
+    bottom: 50px;
+  }
+}
+@media screen and (max-width: 400px) {
+  html body .wrapper main #projects-wrapper .projects .project .project-images .project-img-wrapper .project-img:hover {
+    transform: scale(1.2);
+    bottom: 0;
+  }
 }
 html body .wrapper main #certifications-wrapper {
   background-color: tan;
@@ -533,6 +555,14 @@ html body .wrapper #footer .footer-wrapper .contact-info {
 }
 html body .wrapper #footer .footer-wrapper .contact-info .contact-item i {
   margin-right: 1em;
+}
+@media screen and (max-width: 600px) {
+  html body .wrapper #footer .footer-wrapper .contact-info .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

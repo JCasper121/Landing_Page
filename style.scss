@@ -183,15 +183,30 @@ html {
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;
-                                
+
                                 .project-header {
                                     text-decoration: underline;
                                 }
                                 a {
                                     color: rgb(85, 85, 85);
-                                    
+
                                     i {
                                         font-size: 4em;
+                                        transition: 0.3s;
+                                        &:hover {
+                                            color: $code-green;
+                                        }
+                                    }
+
+                                }
+
+                                .space-delivery {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    
+                                    .project-icon {
+                                        max-width: 40%;
+                                        height: auto;
                                         transition: 0.3s;
                                         &:hover {
                                             color: $code-green;

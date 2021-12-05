@@ -250,9 +250,6 @@
     width: 85%;
   }
 }
-.card:hover {
-  animation: langcardflip;
-}
 
 .framework-card {
   font-family: "Roboto", sans-serif;
@@ -472,6 +469,18 @@ html body .wrapper main #projects-wrapper .projects .project .project-header-wra
 html body .wrapper main #projects-wrapper .projects .project .project-header-wrapper a i:hover {
   color: #1eff00;
 }
+html body .wrapper main #projects-wrapper .projects .project .project-header-wrapper .space-delivery {
+  display: flex;
+  justify-content: flex-end;
+}
+html body .wrapper main #projects-wrapper .projects .project .project-header-wrapper .space-delivery .project-icon {
+  max-width: 40%;
+  height: auto;
+  transition: 0.3s;
+}
+html body .wrapper main #projects-wrapper .projects .project .project-header-wrapper .space-delivery .project-icon:hover {
+  color: #1eff00;
+}
 html body .wrapper main #projects-wrapper .projects .project .hover-text {
   color: black;
   font-weight: bold;
@@ -504,6 +513,12 @@ html body .wrapper main #projects-wrapper .projects .project .project-images .pr
   html body .wrapper main #projects-wrapper .projects .project .project-images .project-img-wrapper .project-img:hover {
     transform: scale(1.8);
     bottom: 50px;
+  }
+}
+@media screen and (max-width: 600px) {
+  html body .wrapper main #projects-wrapper .projects .project .project-images .project-img-wrapper .project-img:hover {
+    transform: scale(1.5);
+    bottom: 0;
   }
 }
 @media screen and (max-width: 400px) {
